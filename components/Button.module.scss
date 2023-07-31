@@ -1,0 +1,120 @@
+@import "../styles/mixins";
+
+.root {
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.3rem;
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.1rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--outline-color);
+  }
+}
+
+.mode {
+  background-color: transparent;
+  padding: 0.4rem;
+}
+
+.back {
+  width: min-content;
+  min-width: 13.6rem;
+  min-height: 4rem;
+  flex-shrink: 0;
+  border-radius: 3px;
+  background: var(--background-elements);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+}
+
+.border {
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  background: var(--background-elements);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.mode,
+.back,
+.border {
+  transition: background-color 0.2s ease;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--button-hover);
+  }
+}
+
+.pagination {
+  font-weight: 700;
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  background: var(--background-elements);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease-in-out;
+
+  & > svg {
+    width: 2.4rem;
+  }
+
+  &:not(:disabled):hover {
+    cursor: pointer;
+    border-color: var(--outline-color);
+  }
+
+  &[data-active="true"] {
+    cursor: default;
+    border: none;
+    background-color: var(--background-active);
+    color: var(--text-active);
+  }
+
+  &[data-aria-dots="true"] {
+    border: none;
+    pointer-events: none;
+    background-color: transparent;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  @include md {
+    width: 4rem;
+    height: 4rem;
+    min-width: 4rem;
+    min-height: 4rem;
+
+    & > svg {
+      width: 3.2rem;
+    }
+  }
+}
+
+.hidde_on_dark {
+  [data-theme="dark"] & {
+    display: none;
+  }
+}
+
+.hidde_on_light {
+  [data-theme="light"] & {
+    display: none;
+  }
+}

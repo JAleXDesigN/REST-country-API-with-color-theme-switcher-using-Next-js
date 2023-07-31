@@ -1,0 +1,129 @@
+@import "../styles/mixins";
+
+.root {
+  width: 100%;
+  margin: 7rem 0 3rem;
+  display: grid;
+  align-items: center;
+  row-gap: 2.5rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 7rem;
+  }
+
+  @include lg {
+    margin: 8rem 0 4rem;
+    gap: 0 15rem;
+  }
+}
+
+.image {
+  width: auto;
+  height: 26.8rem;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+
+  @include lg {
+    height: 40rem;
+  }
+
+  & > img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center center;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  & > h1 {
+    margin: 0 0 3.3rem;
+    color: var(--text-primary);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+}
+
+.data {
+  display: grid;
+  column-gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "c_name tld"
+    "population currencies"
+    "region languages"
+    "subregion none"
+    "capital none";
+}
+
+.a_name,
+.a_tld,
+.a_population,
+.a_currencies,
+.a_region,
+.a_languages,
+.a_subregion,
+.a_capital {
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+
+  & > span {
+    color: var(--text-secondary);
+  }
+}
+
+.a_name {
+  grid-area: c_name;
+}
+.a_tld {
+  grid-area: tld;
+}
+.a_population {
+  grid-area: population;
+}
+.a_currencies {
+  grid-area: currencies;
+}
+.a_region {
+  grid-area: region;
+}
+.a_languages {
+  grid-area: languages;
+}
+.a_subregion {
+  grid-area: subregion;
+}
+.a_capital {
+  grid-area: capital;
+}
+
+.border_countries {
+  margin-top: 8rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & > span {
+    margin-right: 0.8rem;
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+}

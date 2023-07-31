@@ -1,0 +1,47 @@
+@import "../styles/mixins";
+
+.root {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 99px;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-elements);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  z-index: 50;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+
+  @include lg {
+    height: 80px;
+    padding: 0 80px;
+    flex-shrink: 0;
+  }
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  &:focus-visible {
+    outline: 2px solid var(--outline-color);
+  }
+
+  @include lg {
+    font-size: 2.5rem;
+  }
+}
