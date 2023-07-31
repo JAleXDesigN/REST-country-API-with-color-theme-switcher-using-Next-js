@@ -51,7 +51,7 @@ const Pagination: FC<PaginationProps> = ({
             variant="pagination"
             icon={!isNumber ? IconDots : undefined}
             label={isNumber ? `${btn}` : ""}
-            aria-label={isNumber ? `Go to page ${btn}` : undefined}
+            aria-label={isNumber ? `Go to page ${btn}` : "Dots"}
             data-active={(isNumber && btn === active) || undefined}
             data-aria-dots={!isNumber ? true : undefined}
             {...(isNumber ? { onClick: () => onChange(btn) } : {})}
