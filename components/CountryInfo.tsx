@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FC, Fragment, useMemo } from "react";
 
+import { useCountries } from "@/context";
 import { getCurrenciesNames, getLanguageNames } from "@/helpers";
 
 import Button from "./Button";
@@ -13,8 +14,9 @@ import { IconArrow } from "./icons";
 
 const { root, image, info, data, border_countries } = styles;
 
-const CountryInfo: FC<CountryInfo> = ({ borders, ...rest }) => {
+const CountryInfo: FC<CountryInfo> = (countryInfo) => {
   const router = useRouter();
+  const {borders: borders_list} = useCountries()
   const country = useMemo(() => {
     const {
       flags,
@@ -26,7 +28,8 @@ const CountryInfo: FC<CountryInfo> = ({ borders, ...rest }) => {
       currencies,
       languages,
       population,
-    } = rest;
+      borders
+    } = countryInfo;
     return {
       name: name.official,
       flag: { src: flags.svg, alt: flags.alt },
@@ -52,8 +55,9 @@ const CountryInfo: FC<CountryInfo> = ({ borders, ...rest }) => {
           area: "a_languages",
         },
       ],
+      borders: borders.map(border => ({cca3: border, name: borders_list[border]}))
     };
-  }, [rest]);
+  }, [countryInfo, borders_list]);
 
   return (
     <>
@@ -90,16 +94,16 @@ const CountryInfo: FC<CountryInfo> = ({ borders, ...rest }) => {
             ))}
           </div>
 
-          {borders.length > 0 && (
+          {country.borders.length > 0 && (
             <div className={border_countries}>
               <span>Border Countries:</span>
-              {borders.map((border) => (
+              {country.borders.map(({cca3, name}) => (
                 <Button
                   variant="border"
-                  label={border}
+                  label={name}
                   component={Link}
-                  key={border}
-                  href={`/country/${border.toLowerCase()}`}
+                  key={cca3}
+                  href={`/country/${cca3.toLowerCase()}`}
                 />
               ))}
             </div>

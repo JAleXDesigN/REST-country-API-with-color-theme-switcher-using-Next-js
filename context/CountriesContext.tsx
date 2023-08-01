@@ -39,6 +39,13 @@ const CountriesProvider: ICountriesProvider = ({
     [countries]
   );
 
+  const borders = useMemo(() =>
+    countries.reduce((obj, country) => {
+      obj[country.cca3] = country.name.common;
+      return obj;
+    }, {} as Record<string, string>), [countries]
+  );  
+
   const setSearch = (query: string, search: boolean) => {
     queryRef.current = query;
     dispatch({ type: "SET_SEARCH_VALUE", payload: { query, search } });
@@ -56,6 +63,7 @@ const CountriesProvider: ICountriesProvider = ({
         searching,
         countries: filtered_countries,
         countries_name,
+        borders,
         setSearch,
         filterByRegion,
       }}

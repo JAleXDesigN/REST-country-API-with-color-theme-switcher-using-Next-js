@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://your-solution-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/countries-site-using-next-js-cJbnkNcCzB)
 - [Live Site URL](https://the-world-countries.vercel.app/)
 
 ## My process

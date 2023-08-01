@@ -27,6 +27,7 @@ interface CountriesContext {
   searching: boolean;
   countries: Countries;
   countries_name: string[];
+  borders: Record<string, string>
   setSearch: (query: string, search: boolean) => void;
   filterByRegion: (filter: Filter) => void;
 }
