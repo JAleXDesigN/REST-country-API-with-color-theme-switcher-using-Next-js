@@ -2,24 +2,30 @@
 
 import { useTheme } from "@wits/next-themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import Button from "./Button";
 import styles from "./Header.module.scss";
 import { IconMoon, IconSun } from "./icons";
 
-const { root, wrapper, logo } = styles;
+const { root, wrapper, title, logo } = styles;
 
 const Header = () => {
   const { setTheme } = useTheme();
+  const pathname = usePathname();
   return (
     <header className={root}>
       <div className={wrapper}>
-        <Link
-          href="/"
-          className={logo}
-        >
-          Where in the world?
-        </Link>
+        {pathname === "/" ? (
+          <h1 className={title}>Where in the world?</h1>
+        ) : (
+          <Link
+            href="/"
+            className={logo}
+          >
+            Where in the world?
+          </Link>
+        )}
 
         <Button
           variant="mode"
